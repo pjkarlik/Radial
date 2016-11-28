@@ -1,0 +1,51 @@
+// Variables //
+@baseColor: #51a7ff;
+@secondaryColor: #51a7ff;
+@nuturalColor: #611818;
+@white: #efefef;
+@black: #000;
+@grey: #999;
+@colorA: #8c8c8c;
+@colorB: #131313;
+@colorE: #1c63ab;
+@transparent: rgba(0,0,0,0);
+@glowColor: #c3ecff;
+
+@radius: 5px;
+@bladeOn: 0px -5px 0px @baseColor;
+@bladeLight: 0px -5px 0px @white;
+@bladeTime: 250ms;
+
+@mainFont: 'Titillium Web', sans-serif;
+@headerFont: 'Lobster', sans-serif;
+@contentFont: 'Lato', sans-serif;
+
+@backgroundGradient: 0deg,
+rgba(0, 0, 0, 0) 0%,
+rgba(0, 0, 0, .5) 1%,
+rgba(0, 0, 0, 1) 25%,
+rgba(0, 0, 0, 1) 65%,
+rgba(0, 0, 0, .5) 98%,
+rgba(0, 0, 0, 0) 100%;
+// Gradient //
+.tvscreen{
+  background: -ms-linear-gradient(@backgroundGradient);
+  background: linear-gradient(@backgroundGradient);
+}
+// Mixins for Positioning //
+.center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.clearfix {
+}
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}

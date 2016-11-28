@@ -1,0 +1,141 @@
+@width: 40px;
+@height: @width;
+@radius: 6px;
+@resourcePath:'../../resources/';
+
+.boxShadow() {
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.boundContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  &.home0{
+    background: url('@{resourcePath}/dance/dance00.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home1{
+    background: url('@{resourcePath}/dance/dance00.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home2{
+    background: url('@{resourcePath}/dance/dance07.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home3{
+    background: url('@{resourcePath}/dance/dance06.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home4{
+    background: url('@{resourcePath}/dance/dance05.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home5{
+    background: url('@{resourcePath}/dance/dance04.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home6{
+    background: url('@{resourcePath}/dance/dance03.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home7{
+    background: url('@{resourcePath}/dance/dance02.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home8{
+    background: url('@{resourcePath}/dance/dance01.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home9{
+    background: url('@{resourcePath}/dance/dance00.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home10{
+    background: url('@{resourcePath}/dance/dance01.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home11{
+    background: url('@{resourcePath}/dance/dance02.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home12{
+    background: url('@{resourcePath}/dance/dance03.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+  &.home13{
+    background: url('@{resourcePath}/dance/dance04.gif') 50% 50% no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+.transitionContainer {
+
+}
+
+.disc {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: @radius;
+  height: @height;
+  line-height: @height;
+  width: @width;
+  text-align: center;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+}
+
+.controls {
+  left: 50%;
+  position: absolute;
+  bottom: 10px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.toggleLink {
+  background: rgba(255,255,255,0.2);
+  border-radius: @radius;
+  border: 1px solid #FFF;
+  .boxShadow();
+  color: #FFF;
+  display: inline-block;
+  line-height: 16px;
+  outline: none;
+  padding: 1px 6px 2px;
+  text-decoration: none;
+  &.toggleLink {
+    margin-left: 10px;
+  }
+  &:active {
+    background: rgba(0,175,0,0.5);
+    border: 1px solid #FFF;
+    color: #FFF;
+  }
+  &.active {
+    background: rgba(0,175,0,0.5);
+    border: 1px solid #FFF;
+    color: #FFF;
+  }
+}
+
+.playHead {
+  opacity: 0.3;
+  border-radius: @radius;
+  bottom: @width;
+  top: @width;
+  width: @width;
+  position: absolute;
+}
+:export {
+  gridSize: @width;
+}

@@ -1,0 +1,99 @@
+@import (reference) '../styles/Variables.less';
+@speed: 300ms;
+@size: 100px;
+@smallSize: @size / 2;
+
+@radialBorder: -.6em;
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle {
+  display: block;
+  background-color: @colorA;
+  background-image: linear-gradient(to top, @colorA, #FFF);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0px 3px 8px @colorB, inset 0px 2px 3px #2e4c6b;
+  color: @colorB;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: @size;
+  margin: 0;
+  padding: 0;
+  width: @size;
+  height: @size;
+  outline: none;
+  text-align: center;
+  transition: box-shadow 500ms ease-in-out;
+  &:before {
+    content: "";
+    display: block;
+    // background: #FFF;
+    position: absolute;
+    top: @radialBorder;
+    left: @radialBorder;
+    bottom: @radialBorder;
+    right: @radialBorder;
+    z-index: -1;
+    border-radius: 50%;
+    box-shadow: inset 0px 8px 48px @colorB;
+    transition: box-shadow 500ms ease-in-out;
+  }
+  & span {
+    color: #666;
+  }
+  &.open {
+    background-image: linear-gradient(to top, @baseColor, @baseColor);
+    box-shadow: 0px 3px 8px @baseColor, inset 0px 2px 3px @baseColor;
+    & span {
+      color: @black;
+    }
+    &:before {
+      box-shadow: inset 0px 8px 48px @colorB, 0px 0px 0px 10px @baseColor;
+    }
+  }
+}
+
+.button {
+  display: block;
+  background-color: rgba(0,0,0,0.5);
+  //  background-image: linear-gradient(to top, @colorA, #FFF);
+  border-radius: 50%;
+  color: @white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: @smallSize;
+  text-align: center;
+  text-decoration: none;
+  width: @smallSize;
+  height: @smallSize;
+  .center();
+  z-index: -1;
+  transition: top @speed ease-in-out,
+  left @speed ease-in-out,
+  box-shadow @speed ease-in-out;
+  &:hover {
+    color: #FFF;
+    background-color: @baseColor;
+    background-image: linear-gradient(to top, @baseColor, @colorE);
+  }
+  &.open{
+    animation: pulsate 3s infinite ease-in-out;
+  }
+}
+
+@keyframes pulsate {
+   0% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+   40% { box-shadow: 0px 0px 10px 8px @baseColor;}
+   60% { box-shadow: 0px 0px 8px 8px @baseColor;}
+  100% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+}
+
+:export {
+  buttonSize: unit(@size);
+  smallSize: unit(@smallSize);
+}
