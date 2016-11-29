@@ -168,7 +168,7 @@ export default class SlickShot extends React.Component {
           {discs}
           <div
             className={classes.playHead}
-            style = {{ left: headStyle, background: `hsl(${headStyle * 0.5},100%,50%)` }}
+            style = {{ left: headStyle }}
           ></div>
         </ReactTransitionGroup>
       </div>

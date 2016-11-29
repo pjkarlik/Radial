@@ -44,16 +44,16 @@ class Home extends React.Component {
     router.push(path);
   };
   startLoop = () => {
-    const checkSound = this.sounds.drums.data.playing();
+    const checkSound = this.sounds.egyptloop.data.playing();
     if (!checkSound) {
-      this.sounds.drums.data.play();
-      this.sounds.drums.data.fade(0, 0.3, 3000);
+      this.sounds.egyptloop.data.play();
+      this.sounds.egyptloop.data.fade(0, 0.7, 3000);
     }
   };
   stopLoop = () => {
-    this.sounds.drums.data.fade(0.3, 0, 6000);
+    this.sounds.egyptloop.data.fade(0.7, 0, 6000);
     setTimeout(() => {
-      this.sounds.drums.data.stop();
+      this.sounds.egyptloop.data.stop();
     }, 6000);
   };
 

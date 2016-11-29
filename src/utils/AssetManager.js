@@ -54,7 +54,9 @@ export const soundAssets = {
     src: egyptloop,
     type: 'sound',
     volume: 0.5,
-    options: {},
+    options: {
+      loop: true,
+    },
     data: null,
   },
   hit01: {
