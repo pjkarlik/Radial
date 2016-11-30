@@ -57,7 +57,7 @@ class Home extends React.Component {
   };
   render() {
     const { classes } = this.props;
-    const background = `home${~~(Math.random() * 7)}`;
+    const background = `home${5 + ~~(Math.random() * 6)}`;
     return (
       <div {...resolve(this.props, 'container', background)}>
         <div {...resolve(this.props, 'widget')}>
