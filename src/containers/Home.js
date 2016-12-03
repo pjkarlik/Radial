@@ -31,7 +31,7 @@ class Home extends React.Component {
     this.assetManager = new AssetManager();
     this.assetManager.downloadAll();
     this.sounds = this.assetManager.assets;
-    this.background = this.setBackground();
+    this.background = ~~(Math.random() * 3);
   }
   componentDidMount() {
     setTimeout(() => {
@@ -46,10 +46,6 @@ class Home extends React.Component {
   onClick = (path) => {
     const { router } = this.props;
     router.push(path);
-  }
-  setBackground = () => {
-    const background = `home${~~(Math.random() * 3)}`;
-    return background;
   }
   startLoop = () => {
     const checkSound = this.sounds.ambient1.data.playing();
@@ -67,9 +63,9 @@ class Home extends React.Component {
   render() {
     const { items } = this.props;
     return (
-      <div {...resolve(this.props, 'container', this.background)}>
+      <div {...resolve(this.props, 'container', `home${this.background}`)}>
         <div {...resolve(this.props, 'widget')}>
-          <RadialNav items = {items} classes = {RadialStyles} clickHandler = {this.onClick} />
+          <RadialNav items = {items} mod = {this.background} classes = {RadialStyles} clickHandler = {this.onClick} />
         </div>
       </div>
     );

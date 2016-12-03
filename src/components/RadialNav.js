@@ -6,6 +6,7 @@ export default class Navigation extends React.Component {
   static displayName = 'Navigation';
   static propTypes={
     classes: React.PropTypes.object,
+    mod: React.PropTypes.number,
     items: React.PropTypes.array,
     clickHandler: React.PropTypes.func,
   };
@@ -71,7 +72,8 @@ export default class Navigation extends React.Component {
     }, 4000);
   };
   render() {
-    const { items, classes } = this.props;
+    const { items, classes, mod } = this.props;
+    const themeClasses = `theme${mod}`;
     const { menu } = this.state;
 
     const navigation = items.map((item, index) => {
@@ -85,7 +87,7 @@ export default class Navigation extends React.Component {
           onClick = {this.menuToggle}
           onMouseEnter = {this.handleHover}
           key = {`link${index}`}
-          {...resolve(this.props, 'button', menu ? 'open' : null)}
+          {...resolve(this.props, 'button', themeClasses, menu ? 'open' : null)}
           style = {inlineStyle}
         >
           {item.name}
@@ -97,7 +99,7 @@ export default class Navigation extends React.Component {
     return (
       <div className={classes.wrapper}>
         <button
-          {...resolve(this.props, 'circle', menu ? 'open' : null)}
+          {...resolve(this.props, 'circle', themeClasses, menu ? 'open' : null)}
           onClick = {this.menuToggle}
         >
           <span>

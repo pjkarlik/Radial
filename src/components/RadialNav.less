@@ -1,4 +1,5 @@
 @import (reference) '../styles/Variables.less';
+
 @speed: 300ms;
 @size: 100px;
 @smallSize: @size / 2;
@@ -13,12 +14,20 @@
 
 .circle {
   display: block;
-  background-color: @colorA;
-  background-image: linear-gradient(to top, @colorA, #FFF);
+  background-color: @baseUI;
+  background-image: linear-gradient(to top, @baseUI, #FFF);
   border: 0;
   border-radius: 50%;
-  box-shadow: 0px 3px 8px @colorB, inset 0px 2px 3px #2e4c6b;
-  color: @colorB;
+  &.theme0{
+    box-shadow: 0px 3px 8px @greyTheme, inset 0px 2px 3px @baseTheme0;
+  }
+  &.theme1{
+    box-shadow: 0px 3px 8px @greyTheme, inset 0px 2px 3px @baseTheme1;
+  }
+  &.theme2{
+    box-shadow: 0px 3px 8px @greyTheme, inset 0px 2px 3px @baseTheme2;
+  }
+  color: @greyTheme;
   cursor: pointer;
   font-size: 30px;
   line-height: @size;
@@ -32,7 +41,6 @@
   &:before {
     content: "";
     display: block;
-    // background: #FFF;
     position: absolute;
     top: @radialBorder;
     left: @radialBorder;
@@ -40,21 +48,47 @@
     right: @radialBorder;
     z-index: -1;
     border-radius: 50%;
-    box-shadow: inset 0px 8px 48px @colorB;
+    box-shadow: inset 0px 8px 48px @greyTheme;
     transition: box-shadow 500ms ease-in-out;
   }
   & span {
-    color: #666;
+    color: #333;
   }
   &.open {
-    background-image: linear-gradient(to top, @baseColor, @baseColor);
-    box-shadow: 0px 3px 8px @baseColor, inset 0px 2px 3px @baseColor;
-    & span {
-      color: @black;
+    &.theme0{
+
+      background-image: linear-gradient(to top, @baseTheme0, @baseTheme0);
+      box-shadow: 0px 3px 8px @baseTheme0, inset 0px 2px 3px @baseTheme0;
+      & span {
+        color: @highLightTheme0;
+      }
+      &:before {
+        box-shadow: inset 0px 8px 48px @greyTheme, 0px 0px 0px 10px @baseTheme0;
+      }
     }
-    &:before {
-      box-shadow: inset 0px 8px 48px @colorB, 0px 0px 0px 10px @baseColor;
+    &.theme1{
+
+      background-image: linear-gradient(to top, @baseTheme1, @baseTheme1);
+      box-shadow: 0px 3px 8px @baseTheme1, inset 0px 2px 3px @baseTheme1;
+      & span {
+        color: @highLightTheme1;
+      }
+      &:before {
+        box-shadow: inset 0px 8px 48px @greyTheme, 0px 0px 0px 10px @baseTheme1;
+      }
     }
+    &.theme2{
+
+      background-image: linear-gradient(to top, @baseTheme2, @baseTheme2);
+      box-shadow: 0px 3px 8px @baseTheme2, inset 0px 2px 3px @baseTheme2;
+      & span {
+        color: @highLightTheme2;
+      }
+      &:before {
+        box-shadow: inset 0px 8px 48px @greyTheme, 0px 0px 0px 10px @baseTheme2;
+      }
+    }
+
   }
 }
 
@@ -76,20 +110,56 @@
   transition: top @speed ease-in-out,
   left @speed ease-in-out,
   box-shadow @speed ease-in-out;
-  &:hover {
-    color: #FFF;
-    background-color: @baseColor;
-    background-image: linear-gradient(to top, @baseColor, @colorE);
+
+  &.theme0{
+    &:hover {
+      color: @highLightTheme0;
+      background-color: @baseTheme0;
+      background-image: linear-gradient(to top, @baseTheme0, @darkerTheme0);
+    }
+    &.open{
+      animation: pulsate0 3s infinite ease-in-out;
+    }
   }
-  &.open{
-    animation: pulsate 3s infinite ease-in-out;
+  &.theme1{
+    &:hover {
+      color: @highLightTheme1;
+      background-color: @baseTheme1;
+      background-image: linear-gradient(to top, @baseTheme1, @darkerTheme1);
+    }
+    &.open{
+      animation: pulsate1 3s infinite ease-in-out;
+    }
   }
+  &.theme2{
+    &:hover {
+      color: @highLightTheme2;
+      background-color: @baseTheme2;
+      background-image: linear-gradient(to top, @baseTheme2, @darkerTheme2);
+    }
+    &.open{
+      animation: pulsate2 3s infinite ease-in-out;
+    }
+  }
+
 }
 
-@keyframes pulsate {
+@keyframes pulsate0 {
    0% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
-   40% { box-shadow: 0px 0px 10px 8px @baseColor;}
-   60% { box-shadow: 0px 0px 8px 8px @baseColor;}
+   40% { box-shadow: 0px 0px 10px 8px @highLightTheme0;}
+   60% { box-shadow: 0px 0px 8px 8px @highLightTheme0;}
+  100% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+}
+@keyframes pulsate1 {
+   0% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+   40% { box-shadow: 0px 0px 10px 8px @baseTheme1;}
+   60% { box-shadow: 0px 0px 8px 8px @baseTheme1;}
+  100% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+}
+@keyframes pulsate2 {
+   0% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+   40% { box-shadow: 0px 0px 10px 8px @baseTheme2;}
+   60% { box-shadow: 0px 0px 8px 8px @baseTheme2;}
   100% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
 }
 
