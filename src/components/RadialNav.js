@@ -20,7 +20,16 @@ export default class Navigation extends React.Component {
       menu: false,
     };
   }
-
+  componentDidMount() {
+    setTimeout(() => {
+      this.startLoop('loop');
+    }, 1000);
+  }
+  componentWillUnmount() {
+    setTimeout(() => {
+      this.stopLoop('loop');
+    }, 1000);
+  }
   getPosition = (index) => {
     const { items, classes } = this.props;
     const { menu } = this.state;
@@ -41,12 +50,13 @@ export default class Navigation extends React.Component {
       setTimeout(() => this.props.clickHandler(path), 500);
     }
     setTimeout(() => {
+      const { mod } = this.props;
       if (this.state.menu) {
-        this.assetManager.assets.al02.data.play();
-        this.startLoop();
+        this.assetManager.assets[`theme${mod}open`].data.play();
+        this.startLoop('action');
       } else {
-        this.assetManager.assets.al01.data.play();
-        this.stopLoop();
+        this.assetManager.assets[`theme${mod}close`].data.play();
+        this.stopLoop('action');
       }
     }, 3);
     this.setState({
@@ -56,19 +66,25 @@ export default class Navigation extends React.Component {
 
   handleHover = (event) => {
     event.preventDefault();
-    setTimeout(() => this.assetManager.assets.al03.data.play(), 3);
+    const { mod } = this.props;
+    setTimeout(() => this.assetManager.assets[`theme${mod}hover`].data.play(), 3);
   };
-  startLoop = () => {
-    const checkSound = this.sounds.ambient2.data.playing();
+  startLoop = (type) => {
+    const { mod } = this.props;
+    const playClip = this.sounds[`theme${mod}${type}`];
+    console.log(playClip);
+    const checkSound = false;
     if (!checkSound) {
-      this.sounds.ambient2.data.play();
-      this.sounds.ambient2.data.fade(0, 0.4, 4000);
+      playClip.data.play();
+      playClip.data.fade(0, 0.4, 1000);
     }
   };
-  stopLoop = () => {
-    this.sounds.ambient2.data.fade(0.4, 0, 4000);
+  stopLoop = (type) => {
+    const { mod } = this.props;
+    const playClip = this.sounds[`theme${mod}${type}`];
+    playClip.data.fade(0.4, 0, 1000);
     setTimeout(() => {
-      this.sounds.ambient2.data.stop();
+      playClip.data.stop();
     }, 4000);
   };
   render() {

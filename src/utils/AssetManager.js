@@ -1,41 +1,20 @@
 import { Howl } from 'howler';
 
-import al01 from '../../resources/sounds/airlock01.mp3';
-import al02 from '../../resources/sounds/airlock02.mp3';
-import al03 from '../../resources/sounds/airlock03.mp3';
-import hit01 from '../../resources/sounds/hit01.mp3';
-import hit02 from '../../resources/sounds/hit02.mp3';
-import airloop1 from '../../resources/sounds/airlockloop.mp3';
-import airloop2 from '../../resources/sounds/ambientloop.mp3';
+import theme0action from '../../resources/sounds/theme0action.mp3';
+import theme0loop from '../../resources/sounds/theme0loop.mp3';
 
-import phasleloop from '../../resources/sounds/phasleloop.mp3';
-import egyptloop from '../../resources/sounds/egyptloop.mp3';
-import musicloop from '../../resources/sounds/egyptloop.mp3';
+import theme1action from '../../resources/sounds/theme1action.mp3';
+import theme1loop from '../../resources/sounds/theme1loop.mp3';
+import theme1close from '../../resources/sounds/theme1close.mp3';
+import theme1open from '../../resources/sounds/theme1open.mp3';
+import theme1hover from '../../resources/sounds/theme1hover.mp3';
 
-// import danceloop01 from '../../resources/sounds/danceloop01.mp3';
-// import danceloop02 from '../../resources/sounds/danceloop02.mp3';
+import theme2action from '../../resources/sounds/theme2action.mp3';
+import theme2loop from '../../resources/sounds/theme2loop.mp3';
 
 export const soundAssets = {
-  // dloop1: {
-  //   src: danceloop01,
-  //   type: 'sound',
-  //   volume: 0.8,
-  //   options: {
-  //     loop: true,
-  //   },
-  //   data: null,
-  // },
-  // dloop2: {
-  //   src: danceloop02,
-  //   type: 'sound',
-  //   volume: 0.8,
-  //   options: {
-  //     loop: true,
-  //   },
-  //   data: null,
-  // },
-  ambient1: {
-    src: airloop1,
+  theme0loop: {
+    src: theme0loop,
     type: 'sound',
     volume: 0.5,
     options: {
@@ -43,15 +22,8 @@ export const soundAssets = {
     },
     data: null,
   },
-  ambient2: {
-    src: airloop2,
-    type: 'sound',
-    volume: 0.5,
-    options: {},
-    data: null,
-  },
-  egyptloop: {
-    src: egyptloop,
+  theme0action: {
+    src: theme0action,
     type: 'sound',
     volume: 0.5,
     options: {
@@ -59,57 +31,103 @@ export const soundAssets = {
     },
     data: null,
   },
-  hit01: {
-    src: hit01,
+  theme0open: {
+    src: theme1open,
     type: 'sound',
-    volume: 0.4,
+    volume: 0.2,
     options: {},
     data: null,
   },
-  hit02: {
-    src: hit02,
+  theme0close: {
+    src: theme1close,
     type: 'sound',
-    volume: 0.4,
+    volume: 0.2,
     options: {},
     data: null,
   },
-  al01: {
-    src: al01,
+  theme0hover: {
+    src: theme1hover,
     type: 'sound',
-    volume: 0.1,
+    volume: 0.5,
     options: {},
     data: null,
   },
-  al02: {
-    src: al02,
+
+  theme1loop: {
+    src: theme1loop,
     type: 'sound',
-    volume: 0.1,
+    volume: 0.5,
     options: {},
     data: null,
   },
-  al03: {
-    src: al03,
+  theme1action: {
+    src: theme1action,
     type: 'sound',
-    volume: 0.3,
-    options: {},
-    data: null,
-  },
-  drums: {
-    src: phasleloop,
-    type: 'sound',
-    volume: 0.3,
+    volume: 0.5,
     options: {
       loop: true,
     },
     data: null,
   },
-  music: {
-    src: musicloop,
+  theme1open: {
+    src: theme1open,
     type: 'sound',
-    volume: 0.3,
+    volume: 0.2,
+    options: {},
+    data: null,
+  },
+  theme1close: {
+    src: theme1close,
+    type: 'sound',
+    volume: 0.2,
+    options: {},
+    data: null,
+  },
+  theme1hover: {
+    src: theme1hover,
+    type: 'sound',
+    volume: 0.5,
+    options: {},
+    data: null,
+  },
+
+  theme2loop: {
+    src: theme2loop,
+    type: 'sound',
+    volume: 0.5,
     options: {
       loop: true,
     },
+    data: null,
+  },
+  theme2action: {
+    src: theme2action,
+    type: 'sound',
+    volume: 0.5,
+    options: {
+      loop: true,
+    },
+    data: null,
+  },
+  theme2open: {
+    src: theme1open,
+    type: 'sound',
+    volume: 0.2,
+    options: {},
+    data: null,
+  },
+  theme2close: {
+    src: theme1close,
+    type: 'sound',
+    volume: 0.2,
+    options: {},
+    data: null,
+  },
+  theme2hover: {
+    src: theme1hover,
+    type: 'sound',
+    volume: 0.5,
+    options: {},
     data: null,
   },
 };
