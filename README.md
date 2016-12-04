@@ -3,6 +3,7 @@
   Concept for my 2017 Digital portfolio and interactive demo - a testing ground and example of my latest experiments, projects and other fun stuff.
 
 ## Updates
+  * Theme system, small sample and hand curated themes including sounds, colors, and animated backgrounds.
   * Radial Navigation System
   * Initial Commit
 
