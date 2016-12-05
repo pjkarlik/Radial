@@ -57,7 +57,9 @@ export const soundAssets = {
     src: theme1loop,
     type: 'sound',
     volume: 0.5,
-    options: {},
+    options: {
+      loop: true,
+    },
     data: null,
   },
   theme1action: {

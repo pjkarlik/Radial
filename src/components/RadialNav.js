@@ -26,9 +26,15 @@ export default class Navigation extends React.Component {
     }, 1000);
   }
   componentWillUnmount() {
-    setTimeout(() => {
-      this.stopLoop('loop');
-    }, 1000);
+    this.stopLoop('loop');
+    const { mod } = this.props;
+    const playClip = this.sounds[`theme${mod}action`];
+    playClip.data.fade(0.4, 0, 500);
+    if (this.state.menu) {
+      setTimeout(() => {
+        playClip.data.stop();
+      }, 500);
+    }
   }
   getPosition = (index) => {
     const { items, classes } = this.props;
@@ -72,20 +78,19 @@ export default class Navigation extends React.Component {
   startLoop = (type) => {
     const { mod } = this.props;
     const playClip = this.sounds[`theme${mod}${type}`];
-    console.log(playClip);
     const checkSound = false;
     if (!checkSound) {
       playClip.data.play();
-      playClip.data.fade(0, 0.4, 1000);
+      playClip.data.fade(0, 0.4, 3000);
     }
   };
   stopLoop = (type) => {
     const { mod } = this.props;
     const playClip = this.sounds[`theme${mod}${type}`];
-    playClip.data.fade(0.4, 0, 1000);
+    playClip.data.fade(0.4, 0, 3000);
     setTimeout(() => {
       playClip.data.stop();
-    }, 4000);
+    }, 3000);
   };
   render() {
     const { items, classes, mod } = this.props;
