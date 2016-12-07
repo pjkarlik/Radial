@@ -4,8 +4,8 @@ import { withRouter } from 'react-router';
 import AssetManager from '../utils/AssetManager';
 
 import SiteStyles from '../styles/Site.less';
-import SlickShot from '../components/SlickShot';
-import SlickShotStyles from '../components/SlickShot.less';
+import IsometricMap from '../components/IsometricMap';
+
 /* eslint no-console: 0 */
 /* eslint arrow-body-style: 0 */
 /* eslint react/jsx-no-bind: 0 */
@@ -28,9 +28,12 @@ class Home extends React.Component {
     this.sounds = this.assetManager.assets;
   }
   componentDidMount() {
+    const demo = new IsometricMap(this.container);
+
     setTimeout(() => {
       this.startLoop();
     }, 400);
+    return demo;
   }
   componentWillUnmount() {
     setTimeout(() => {
@@ -58,15 +61,8 @@ class Home extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-    // Get Grid Size based on LESS values - used for Snapping to grid //
-    const grid = parseInt(SlickShotStyles.gridSize, 10);
     return (
-      <div {...resolve(this.props, 'container')}>
-        <SlickShot classes = {SlickShotStyles} grid = {grid} />
-        <button className = {classes.homeButton} onClick = {() => { this.onClick('/'); }}>
-          home
-        </button>
+      <div {...resolve(this.props, 'container')} ref={(c) => { this.container = c; }} >
       </div>
     );
   }

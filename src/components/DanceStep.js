@@ -7,8 +7,8 @@ import Puck from './Puck';
 /* eslint react/jsx-no-bind: 0 */
 /* eslint no-nested-ternary: 0 */
 
-export default class SlickShot extends React.Component {
-  static displayName = 'SlickShot';
+export default class DanceStep extends React.Component {
+  static displayName = 'DanceStep';
   static propTypes = {
     classes: React.PropTypes.object,
     grid: React.PropTypes.number,

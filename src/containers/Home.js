@@ -19,8 +19,8 @@ class Home extends React.Component {
   static defaultProps = {
     classes: SiteStyles,
     items: [
-      { name: 'dance', link: 'slickshot' },
-      { name: 'cube', link: 'cube' },
+      { name: 'dance', link: 'dance' },
+      { name: 'ismtk', link: 'ismtk' },
       { name: 'home', link: '' },
     ],
   };
