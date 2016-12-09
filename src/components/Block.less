@@ -1,16 +1,16 @@
-@size: 30px;
-@colorTop: #3f8e27;
-@colorRight: #8e5927;
-@colorLeft: #50130f;
-@colorBottom: #16400a;
-
+@size: 55px;
+@colorTop: #FFF;
+@colorRight: #DDD;
+@colorLeft: #BBB;
+@colorBottom: #999;
+@resourcePath:'../../resources/';
 .map {
   position: absolute;
-  bottom: 0;
+  left: 55%;
   transform-style: preserve-3d;
   transition: 200ms;
-
-  top: 50%;
+  transform-origin: center;
+  top: 80%;
   transform: translate(-50%, -50%) rotateX(75deg) rotateZ(45deg);
 }
 
@@ -37,25 +37,25 @@
   transform-origin: 100% 0;
 }
 
-.cubeBack,
-.cubeBack:after,
-.cubeBack:before {
+.back,
+.back:after,
+.back:before {
   content: '';
   height: @size;
   position: absolute;
   width: @size;
 }
-.cubeBack {
+.back {
   background-color: @colorBottom;
   transform-style: preserve-3d;
   transform: rotateX(-180deg) rotateZ(90deg) translateZ(@size);
 }
-.cubeBack:after {
+.back:after {
   background-color: darken(@colorRight, 10%);
   transform: rotateX(-90deg) translateY(@size);
   transform-origin: 100% 100%;
 }
-.cubeBack:before {
+.back:before {
   background-color: darken(@colorLeft, 10%);
   transform: rotateY(90deg) translateX(@size);
   transform-origin: 100% 0;

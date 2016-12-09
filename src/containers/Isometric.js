@@ -26,18 +26,19 @@ class Home extends React.Component {
     this.assetManager = new AssetManager();
     this.assetManager.downloadAll();
     this.sounds = this.assetManager.assets;
+    // this.background = ~~(Math.random() * 3);
   }
   componentDidMount() {
     const demo = new IsometricMap(this.container);
 
     setTimeout(() => {
-      this.startLoop();
+      // this.startLoop();
     }, 400);
     return demo;
   }
   componentWillUnmount() {
     setTimeout(() => {
-      this.stopLoop();
+      // this.stopLoop();
     }, 400);
   }
 
@@ -62,7 +63,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div {...resolve(this.props, 'container')} ref={(c) => { this.container = c; }} >
+      <div {...resolve(this.props, 'container', 'slowdrip')} ref={(c) => { this.container = c; }} >
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import CubeStyle from './Block.less';
-import simplexNoise, { fastfloor } from './simplexNoise';
+// import simplexNoise, { fastfloor } from './simplexNoise';
 /** Block Element **/
 export default class Cube {
   constructor(index, x, y, z, parent, grid, style) {
@@ -27,18 +27,11 @@ export default class Cube {
     cube.appendChild(back);
     this.parent.appendChild(cube);
   }
-
+  //
   updateCube(x, y, z) {
-    this.tick += 15;
-    const thisX = x / this.grid;
-    const thisY = y / this.grid;
-    const thisZ = z / this.grid;
-    const noise = simplexNoise(thisX, thisY, thisZ);
-    const myOpacity = fastfloor(255 * noise);
     const cube = document.getElementById(this.index);
     cube.setAttribute('style',
-    `transform: translate3D(${this.x}px, ${this.y}px, ${this.z}px);` +
-    `opacity:${myOpacity};`
+    `transform: translate3D(${x}px, ${y}px, ${z}px);`
     );
   }
 }
