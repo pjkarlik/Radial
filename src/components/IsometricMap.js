@@ -7,7 +7,7 @@ import simplexNoise from './simplexNoise';
 /** Parent Render Class */
 export default class Render {
   constructor(element) {
-    this.grid = 10;
+    this.grid = 5;
     this.rows = this.grid;
     this.cols = this.grid;
     this.z = 1;
@@ -69,7 +69,7 @@ export default class Render {
   renderLoop() {
     // Loop though Simplex Noise //
     let counter = 0;
-    const size = parseInt(CubeStyle.size, 10) / 2;
+    const size = parseInt(CubeStyle.size, 10);
     this.time += 0.8;
     for (let r = 0; r < this.z; r++) {
       for (let y = 0; y < this.rows; y++) {
