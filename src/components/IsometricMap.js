@@ -7,7 +7,7 @@ import simplexNoise from './simplexNoise';
 /** Parent Render Class */
 export default class Render {
   constructor(element) {
-    this.grid = 5;
+    this.grid = 10;
     this.rows = this.grid;
     this.cols = this.grid;
     this.z = 1;
@@ -61,24 +61,24 @@ export default class Render {
       ang: ~~(this.browserRect.browserWidth / 2 - mouse.x),
       rot: ~~(this.browserRect.browserHeight / 2 - mouse.y),
     };
-    this.rotation += (normalize.rot * 0.01);
-    this.angle += (normalize.ang * 0.01);
+    // this.rotation += (normalize.rot * 0.005);
+    this.angle += (normalize.ang * 0.005);
     document.getElementById('map').setAttribute('style',
-      `transform: rotateX(${this.rotation}deg) rotateZ(${this.angle}deg)`);
+      `transform: translate(-50%, -50%) rotateX(${this.rotation}deg) rotateZ(${this.angle}deg)`);
   }
   renderLoop() {
     // Loop though Simplex Noise //
     let counter = 0;
     const size = parseInt(CubeStyle.size, 10);
-    this.time += 0.8;
+    this.time += 0.02;
     for (let r = 0; r < this.z; r++) {
       for (let y = 0; y < this.rows; y++) {
         for (let x = 0; x < this.cols; x++) {
           const cube = this.cubes[counter];
-          console.log(cube.index);
           const noise =
-            simplexNoise((x * size) / this.grid, ((y * size) + this.time) / this.grid, (r * size) / this.grid);
-          const myOpacity = Math.abs(~~(255 * noise) * 0.03);
+            simplexNoise((x) / this.grid, ((y) + this.time) / this.grid,
+            (r * size) / this.grid);
+          const myOpacity = Math.abs(~~(255 * noise) * 0.02);
           const stylecube = document.getElementById(cube.index);
           stylecube.setAttribute('style',
           `transform: translate3D(${(x * size)}px, ${(y * size)}px, ${(r * size)}px);` +
@@ -89,6 +89,6 @@ export default class Render {
         }
       }
     }
-    // window.requestAnimationFrame(this.renderLoop);
+    window.requestAnimationFrame(this.renderLoop);
   }
 }

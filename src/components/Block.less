@@ -1,17 +1,23 @@
-@size: 55px;
+@base: 55;
+@size: unit(@base, px);
 @colorTop: #FFF;
 @colorRight: #DDD;
 @colorLeft: #BBB;
 @colorBottom: #999;
 @resourcePath:'../../resources/';
+
+@grid: @size * 10;
+
 .map {
   position: absolute;
   left: 55%;
   transform-style: preserve-3d;
   transition: 200ms;
   transform-origin: center;
-  top: 80%;
+  top: 50%;
   transform: translate(-50%, -50%) rotateX(75deg) rotateZ(45deg);
+  width: @grid;
+  height: @grid;
 }
 
 .cube,
@@ -61,5 +67,5 @@
   transform-origin: 100% 0;
 }
 :export {
-  size: @size;
+  size: @base;
 }
