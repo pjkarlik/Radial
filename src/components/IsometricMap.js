@@ -12,8 +12,6 @@ export default class Render {
     this.cols = this.grid;
     this.z = 1;
     this.time = 0;
-    this.axisY = 0;
-    this.axisX = 0;
     this.angle = 45;
     this.rotation = 65;
     this.cubes = [];
@@ -21,23 +19,20 @@ export default class Render {
     this.mouse = new Mouse();
     this.browserRect = getBrowserDimensions(window, document);
     this.perspective = this.createPerspective();
-    this.renderLoop = this.renderLoop.bind(this);
-    this.generateField = this.generateField.bind(this);
-    this.changeAngle = this.changeAngle.bind(this);
     window.addEventListener('mousemove', this.changeAngle);
     this.generateField();
     this.renderLoop();
   }
 
-  createPerspective() {
+  createPerspective = () => {
     const perspective = document.createElement('div');
     perspective.className = CubeStyle.map;
     perspective.id = 'map';
     this.element.appendChild(perspective);
     return perspective;
-  }
+  };
 
-  generateField() {
+  generateField = () => {
     // Generate Cube Field //
     let counter = 0;
     const size = parseInt(CubeStyle.size, 10);
@@ -54,19 +49,19 @@ export default class Render {
         }
       }
     }
-  }
-  changeAngle() {
+  };
+  changeAngle = () => {
     const mouse = this.mouse.pointer();
     const normalize = {
-      ang: ~~(this.browserRect.browserWidth / 2 - mouse.x),
-      rot: ~~(this.browserRect.browserHeight / 2 - mouse.y),
+      ang: ~~(this.browserRect.browserWidth / 2 - mouse.x) * 0.1,
+      rot: ~~(this.browserRect.browserHeight / 2 - mouse.y) * 0.1,
     };
-    // this.rotation += (normalize.rot * 0.005);
+    this.rotation += (normalize.rot * 0.005);
     this.angle += (normalize.ang * 0.005);
     document.getElementById('map').setAttribute('style',
       `transform: translate(-50%, -50%) rotateX(${this.rotation}deg) rotateZ(${this.angle}deg)`);
-  }
-  renderLoop() {
+  };
+  renderLoop = () => {
     // Loop though Simplex Noise //
     let counter = 0;
     const size = parseInt(CubeStyle.size, 10);
@@ -76,8 +71,8 @@ export default class Render {
         for (let x = 0; x < this.cols; x++) {
           const cube = this.cubes[counter];
           const noise =
-            simplexNoise((x) / this.grid, ((y) + this.time) / this.grid,
-            (r * size) / this.grid);
+            simplexNoise((x) / this.grid, (y + this.time) / this.grid,
+            (r) / this.grid);
           const myOpacity = Math.abs(~~(255 * noise) * 0.02);
           const stylecube = document.getElementById(cube.index);
           stylecube.setAttribute('style',
@@ -90,5 +85,5 @@ export default class Render {
       }
     }
     window.requestAnimationFrame(this.renderLoop);
-  }
+  };
 }
