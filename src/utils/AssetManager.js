@@ -12,6 +12,8 @@ import theme1hover from '../../resources/sounds/theme1hover.mp3';
 import theme2action from '../../resources/sounds/theme2action.mp3';
 import theme2loop from '../../resources/sounds/theme2loop.mp3';
 
+import theme3loop from '../../resources/sounds/egyptloop.mp3';
+
 export const soundAssets = {
   theme0loop: {
     src: theme0loop,
@@ -126,6 +128,45 @@ export const soundAssets = {
     data: null,
   },
   theme2hover: {
+    src: theme1hover,
+    type: 'sound',
+    volume: 0.5,
+    options: {},
+    data: null,
+  },
+  theme3loop: {
+    src: theme0loop,
+    type: 'sound',
+    volume: 0.5,
+    options: {
+      loop: true,
+    },
+    data: null,
+  },
+  theme3action: {
+    src: theme3loop,
+    type: 'sound',
+    volume: 0.5,
+    options: {
+      loop: true,
+    },
+    data: null,
+  },
+  theme3open: {
+    src: theme1open,
+    type: 'sound',
+    volume: 0.2,
+    options: {},
+    data: null,
+  },
+  theme3close: {
+    src: theme1close,
+    type: 'sound',
+    volume: 0.2,
+    options: {},
+    data: null,
+  },
+  theme3hover: {
     src: theme1hover,
     type: 'sound',
     volume: 0.5,

@@ -26,7 +26,7 @@ class Home extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.background = ~~(Math.random() * 3);
+    this.background = ~~(Math.random() * 4);
   }
   onClick = (path) => {
     const { router } = this.props;

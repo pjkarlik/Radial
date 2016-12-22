@@ -27,6 +27,9 @@
   &.theme2{
     box-shadow: 0px 3px 8px @greyTheme, inset 0px 2px 3px @baseTheme2;
   }
+  &.theme3{
+    box-shadow: 0px 3px 8px @greyTheme, inset 0px 2px 3px @baseTheme3;
+  }
   color: @greyTheme;
   cursor: pointer;
   font-size: 30px;
@@ -88,7 +91,17 @@
         box-shadow: inset 0px 8px 48px @greyTheme, 0px 0px 0px 10px @baseTheme2;
       }
     }
+    &.theme3{
 
+      background-image: linear-gradient(to top, @baseTheme3, @baseTheme3);
+      box-shadow: 0px 3px 8px @baseTheme3, inset 0px 2px 3px @baseTheme3;
+      & span {
+        color: @highLightTheme3;
+      }
+      &:before {
+        box-shadow: inset 0px 8px 48px @greyTheme, 0px 0px 0px 10px @baseTheme3;
+      }
+    }
   }
 }
 
@@ -141,7 +154,16 @@
       animation: pulsate2 3s infinite ease-in-out;
     }
   }
-
+  &.theme3{
+    &:hover {
+      color: @highLightTheme3;
+      background-color: @baseTheme3;
+      background-image: linear-gradient(to top, @baseTheme3, @darkerTheme3);
+    }
+    &.open{
+      animation: pulsate3 3s infinite ease-in-out;
+    }
+  }
 }
 
 @keyframes pulsate0 {
@@ -162,7 +184,12 @@
    60% { box-shadow: 0px 0px 8px 8px @baseTheme2;}
   100% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
 }
-
+@keyframes pulsate3 {
+   0% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+   40% { box-shadow: 0px 0px 10px 8px @baseTheme3;}
+   60% { box-shadow: 0px 0px 8px 8px @baseTheme3;}
+  100% { box-shadow: 0px 0px 7px 0px rgba(0,0,0,0);}
+}
 :export {
   buttonSize: unit(@size);
   smallSize: unit(@smallSize);
