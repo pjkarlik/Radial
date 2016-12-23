@@ -1,4 +1,4 @@
-@base: 55;
+@base: 45;
 @size: unit(@base, px);
 @colorTop: #FFF;
 @colorRight: #DDD;
@@ -10,7 +10,7 @@
 
 .map {
   position: absolute;
-  left: 55%;
+  left: 50%;
   transform-style: preserve-3d;
   transition: 200ms;
   transform-origin: center;
@@ -27,6 +27,7 @@
   height: @size;
   position: absolute;
   width: @size;
+  transition: translate3D 300ms linear;
 }
 .cube {
   background-color: @colorTop;

@@ -39,11 +39,11 @@ export default class Render {
     const centerX = (size * this.grid) / 2;
     const centerY = (size * this.grid) / 2;
     const centerZ = (size * this.grid) / 2;
-    for (let r = 0; r < this.z; r++) {
+    for (let z = 0; z < this.z; z++) {
       for (let y = 0; y < this.rows; y++) {
         for (let x = 0; x < this.cols; x++) {
           const cube = new Cube(counter,
-            centerX - (x * size), centerY - (y * size), centerZ - (r * size), this.perspective, 100, CubeStyle);
+            centerX - (x * size), centerY - (y * size), centerZ - (z * size), this.perspective, 100, CubeStyle);
           this.cubes.push(cube);
           counter ++;
         }
@@ -56,8 +56,8 @@ export default class Render {
       ang: ~~(this.browserRect.browserWidth / 2 - mouse.x) * 0.1,
       rot: ~~(this.browserRect.browserHeight / 2 - mouse.y) * 0.1,
     };
-    this.rotation += (normalize.rot * 0.005);
-    this.angle += (normalize.ang * 0.005);
+    this.rotation += (normalize.rot * 0.5);
+    this.angle += (normalize.ang * 0.5);
     document.getElementById('map').setAttribute('style',
       `transform: translate(-50%, -50%) rotateX(${this.rotation}deg) rotateZ(${this.angle}deg)`);
   };
@@ -71,13 +71,12 @@ export default class Render {
         for (let x = 0; x < this.cols; x++) {
           const cube = this.cubes[counter];
           const noise =
-            simplexNoise((x) / this.grid, (y + this.time) / this.grid,
-            (r) / this.grid);
-          const myOpacity = Math.abs(~~(255 * noise) * 0.02);
+            simplexNoise((x) / this.grid, (y) / this.grid,
+            (r + this.time) / this.grid);
+          const myOpacity = Math.abs(~~(255 * noise) * 1.2);
           const stylecube = document.getElementById(cube.index);
           stylecube.setAttribute('style',
-          `transform: translate3D(${(x * size)}px, ${(y * size)}px, ${(r * size)}px);` +
-          `opacity:${myOpacity};`
+          `transform: translate3D(${(x * size)}px, ${(y * size)}px, ${(r * size + myOpacity)}px);`
           );
 
           counter ++;
