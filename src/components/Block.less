@@ -12,7 +12,7 @@
   position: absolute;
   left: 50%;
   transform-style: preserve-3d;
-  transition: 200ms;
+  transition: all 300ms linear;
   transform-origin: center;
   top: 50%;
   transform: translate(-50%, -50%) rotateX(75deg) rotateZ(45deg);
@@ -26,20 +26,20 @@
   content: '';
   height: @size;
   position: absolute;
+  transition: all 300ms linear;
   width: @size;
-  transition: translate3D 300ms linear;
 }
 .cube {
-  background-color: @colorTop;
+  // background-color: @colorTop;
   transform-style: preserve-3d;
 }
 .cube:after {
-  background-color: @colorLeft;
+  // background-color: @colorLeft;
   transform: rotateX(-90deg) translateY(@size);
   transform-origin: 100% 100%;
 }
 .cube:before {
-  background-color: @colorRight;
+  // background-color: @colorRight;
   transform: rotateY(90deg) translateX(@size);
   transform-origin: 100% 0;
 }
@@ -53,20 +53,49 @@
   width: @size;
 }
 .back {
-  background-color: @colorBottom;
+  // background-color: @colorBottom;
   transform-style: preserve-3d;
   transform: rotateX(-180deg) rotateZ(90deg) translateZ(@size);
 }
 .back:after {
-  background-color: darken(@colorRight, 10%);
+  // background-color: darken(@colorRight, 10%);
   transform: rotateX(-90deg) translateY(@size);
   transform-origin: 100% 100%;
 }
 .back:before {
-  background-color: darken(@colorLeft, 10%);
+  // background-color: darken(@colorLeft, 10%);
   transform: rotateY(90deg) translateX(@size);
   transform-origin: 100% 0;
 }
+
+// how many objects
+@iterations: 10 * 10;
+@hue: 360 / @iterations;
+.cube-loop (@i) when (@i > 0) {
+  @color: @hue * @i;
+  .cube:nth-child(@{i}) {
+    background: hsl(@color, 100%, 50%);
+    &:after {
+      background: hsl(@color, 80%, 50%);
+    }
+    &:before {
+      background: hsl(@color, 60%, 50%);
+    }
+    .back {
+      background: hsl(@color, 100%, 40%);
+      &:after {
+        background: hsl(@color, 100%, 30%);
+      }
+      &:before {
+        background: hsl(@color, 100%, 20%);
+      }
+    }
+  }
+  .cube-loop (@i - 1)
+}
+
+.cube-loop (@iterations);
+
 :export {
   size: @base;
 }

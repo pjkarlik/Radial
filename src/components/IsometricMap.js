@@ -56,8 +56,8 @@ export default class Render {
       ang: ~~(this.browserRect.browserWidth / 2 - mouse.x) * 0.1,
       rot: ~~(this.browserRect.browserHeight / 2 - mouse.y) * 0.1,
     };
-    this.rotation += (normalize.rot * 0.5);
-    this.angle += (normalize.ang * 0.5);
+    this.rotation += (normalize.rot * 0.4);
+    this.angle += (normalize.ang * 0.4);
     document.getElementById('map').setAttribute('style',
       `transform: translate(-50%, -50%) rotateX(${this.rotation}deg) rotateZ(${this.angle}deg)`);
   };
@@ -73,10 +73,10 @@ export default class Render {
           const noise =
             simplexNoise((x) / this.grid, (y) / this.grid,
             (r + this.time) / this.grid);
-          const myOpacity = Math.abs(~~(255 * noise) * 1.2);
+          const myNoise = Math.abs(~~(255 * noise));
           const stylecube = document.getElementById(cube.index);
           stylecube.setAttribute('style',
-          `transform: translate3D(${(x * size)}px, ${(y * size)}px, ${(r * size + myOpacity)}px);`
+          `transform: translate3D(${(x * size)}px, ${(y * size)}px, ${(r * size + myNoise)}px);`
           );
 
           counter ++;

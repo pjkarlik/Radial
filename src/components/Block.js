@@ -2,7 +2,7 @@ import CubeStyle from './Block.less';
 // import simplexNoise, { fastfloor } from './simplexNoise';
 /** Block Element **/
 export default class Cube {
-  constructor(index, x, y, z, parent, grid, style) {
+  constructor(index, x, y, z, parent, grid) {
     this.index = index;
     this.y = y;
     this.x = x;
@@ -10,7 +10,7 @@ export default class Cube {
     this.grid = grid;
     this.parent = parent;
     this.index = index;
-    this.style = style || CubeStyle;
+    this.style = CubeStyle;
     this.createCube();
     this.updateCube(this.x, this.y, this.z);
   }
