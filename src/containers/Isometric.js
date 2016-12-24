@@ -43,21 +43,21 @@ class Home extends React.Component {
   }
 
   onClick = (path) => {
-    this.stopLoop();
+    // this.stopLoop();
     const { router } = this.props;
     router.push(path);
   };
   startLoop = () => {
-    const checkSound = this.sounds.egyptloop.data.playing();
+    const checkSound = this.sounds.isoloop.data.playing();
     if (!checkSound) {
-      this.sounds.egyptloop.data.play();
-      this.sounds.egyptloop.data.fade(0, 0.7, 3000);
+      this.sounds.isoloop.data.play();
+      this.sounds.isoloop.data.fade(0, 0.7, 3000);
     }
   };
   stopLoop = () => {
-    this.sounds.egyptloop.data.fade(0.7, 0, 6000);
+    this.sounds.isoloop.data.fade(0.7, 0, 6000);
     setTimeout(() => {
-      this.sounds.egyptloop.data.stop();
+      this.sounds.isoloop.data.stop();
     }, 6000);
   };
 

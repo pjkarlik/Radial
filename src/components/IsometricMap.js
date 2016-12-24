@@ -12,8 +12,8 @@ export default class Render {
     this.cols = this.grid;
     this.z = 1;
     this.time = 0;
-    this.angle = 45;
-    this.rotation = 65;
+    this.angle = -5;
+    this.rotation = 35;
     this.cubes = [];
     this.element = element;
     this.mouse = new Mouse();
@@ -56,7 +56,7 @@ export default class Render {
       ang: ~~(this.browserRect.browserWidth / 2 - mouse.x) * 0.1,
       rot: ~~(this.browserRect.browserHeight / 2 - mouse.y) * 0.1,
     };
-    this.rotation += (normalize.rot * 0.4);
+    // this.rotation += (normalize.rot * 0.4);
     this.angle += (normalize.ang * 0.4);
     document.getElementById('map').setAttribute('style',
       `transform: translate(-50%, -50%) rotateX(${this.rotation}deg) rotateZ(${this.angle}deg)`);
@@ -65,7 +65,7 @@ export default class Render {
     // Loop though Simplex Noise //
     let counter = 0;
     const size = parseInt(CubeStyle.size, 10);
-    this.time += 0.02;
+    this.time += 0.1;
     for (let r = 0; r < this.z; r++) {
       for (let y = 0; y < this.rows; y++) {
         for (let x = 0; x < this.cols; x++) {

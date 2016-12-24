@@ -14,7 +14,18 @@ import theme2loop from '../../resources/sounds/theme2loop.mp3';
 
 import theme3loop from '../../resources/sounds/egyptloop.mp3';
 
+import isoloop from '../../resources/sounds/kraftwerk.mp3';
+
 export const soundAssets = {
+  isoloop: {
+    src: isoloop,
+    type: 'sound',
+    volume: 0.5,
+    options: {
+      loop: true,
+    },
+    data: null,
+  },
   theme0loop: {
     src: theme0loop,
     type: 'sound',
