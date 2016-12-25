@@ -32,17 +32,18 @@ class Home extends React.Component {
     this.isometric = new IsometricMap(this.container);
     setTimeout(() => {
       this.startLoop();
+      setTimeout(() => {
+        this.stopLoop();
+      }, 28000);
     }, 400);
   }
   componentWillUnmount() {
     this.isometric.cancelAnimation();
-    setTimeout(() => {
-      this.stopLoop();
-    }, 400);
+    this.stopLoop();
   }
 
   onClick = (path) => {
-    // this.stopLoop();
+    this.stopLoop();
     const { router } = this.props;
     router.push(path);
   };
@@ -50,11 +51,11 @@ class Home extends React.Component {
     const checkSound = this.sounds.isoloop.data.playing();
     if (!checkSound) {
       this.sounds.isoloop.data.play();
-      this.sounds.isoloop.data.fade(0, 0.7, 3000);
+      this.sounds.isoloop.data.fade(0, 0.4, 6000);
     }
   };
   stopLoop = () => {
-    this.sounds.isoloop.data.fade(0.7, 0, 6000);
+    this.sounds.isoloop.data.fade(0.4, 0, 6000);
     setTimeout(() => {
       this.sounds.isoloop.data.stop();
     }, 6000);
