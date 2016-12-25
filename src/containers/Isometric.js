@@ -29,16 +29,15 @@ class Home extends React.Component {
     // this.background = ~~(Math.random() * 3);
   }
   componentDidMount() {
-    const demo = new IsometricMap(this.container);
-
+    this.isometric = new IsometricMap(this.container);
     setTimeout(() => {
-      // this.startLoop();
+      this.startLoop();
     }, 400);
-    return demo;
   }
   componentWillUnmount() {
+    this.isometric.cancelAnimation();
     setTimeout(() => {
-      // this.stopLoop();
+      this.stopLoop();
     }, 400);
   }
 
@@ -62,8 +61,12 @@ class Home extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div {...resolve(this.props, 'container', 'slowdrip')} ref={(c) => { this.container = c; }} >
+        <button className = {classes.homeButton} onClick = {() => { this.onClick('/'); }}>
+          home
+        </button>
       </div>
     );
   }

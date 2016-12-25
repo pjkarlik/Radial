@@ -24,6 +24,11 @@ export default class Render {
     this.renderLoop();
   }
 
+  cancelAnimation = () => {
+    window.removeEventListener('mousemove', this.changeAngle);
+    window.cancelAnimationFrame(this.animation);
+  }
+
   createPerspective = () => {
     const perspective = document.createElement('div');
     perspective.className = CubeStyle.map;
@@ -83,6 +88,6 @@ export default class Render {
         }
       }
     }
-    window.requestAnimationFrame(this.renderLoop);
+    this.animation = window.requestAnimationFrame(this.renderLoop);
   };
 }

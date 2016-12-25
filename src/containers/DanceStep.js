@@ -29,17 +29,17 @@ class Home extends React.Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      this.startLoop();
+      // this.startLoop();
     }, 400);
   }
   componentWillUnmount() {
     setTimeout(() => {
-      this.stopLoop();
+      // this.stopLoop();
     }, 400);
   }
 
   onClick = (path) => {
-    this.stopLoop();
+    // this.stopLoop();
     const { router } = this.props;
     router.push(path);
   };
