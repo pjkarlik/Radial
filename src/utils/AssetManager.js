@@ -12,11 +12,20 @@ import theme1hover from '../../resources/sounds/theme1hover.mp3';
 import theme2action from '../../resources/sounds/theme2action.mp3';
 import theme2loop from '../../resources/sounds/theme2loop.mp3';
 
-import theme3loop from '../../resources/sounds/egyptloop.mp3';
+import egyptloop from '../../resources/sounds/egyptloop.mp3';
 
 import isoloop from '../../resources/sounds/kraftwerk.mp3';
 
 export const soundAssets = {
+  egyptloop: {
+    src: egyptloop,
+    type: 'sound',
+    volume: 0.5,
+    options: {
+      loop: true,
+    },
+    data: null,
+  },
   isoloop: {
     src: isoloop,
     type: 'sound',
@@ -155,7 +164,7 @@ export const soundAssets = {
     data: null,
   },
   theme3action: {
-    src: theme3loop,
+    src: egyptloop,
     type: 'sound',
     volume: 0.5,
     options: {

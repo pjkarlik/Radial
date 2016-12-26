@@ -29,7 +29,7 @@ class Home extends React.Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      // this.startLoop();
+      this.startLoop();
     }, 400);
   }
   componentWillUnmount() {
@@ -44,16 +44,16 @@ class Home extends React.Component {
     router.push(path);
   };
   startLoop = () => {
-    const checkSound = this.sounds.theme3loop.data.playing();
+    const checkSound = this.sounds.egyptloop.data.playing();
     if (!checkSound) {
-      this.sounds.theme3loop.data.play();
-      this.sounds.theme3loop.data.fade(0, 0.7, 3000);
+      this.sounds.egyptloop.data.play();
+      this.sounds.egyptloop.data.fade(0, 0.7, 3000);
     }
   };
   stopLoop = () => {
-    this.sounds.theme3loop.data.fade(0.7, 0, 6000);
+    this.sounds.egyptloop.data.fade(0.7, 0, 6000);
     setTimeout(() => {
-      this.sounds.theme3loop.data.stop();
+      this.sounds.egyptloop.data.stop();
     }, 6000);
   };
 
